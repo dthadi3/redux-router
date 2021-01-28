@@ -1,7 +1,14 @@
 arch:
-  - amd64
+#  - amd64
   - ppc64le
 language: node_js
-node_js:
-  - stable
-  - 15 
+node_js: node
+before_script:
+  - sudo apt-get update
+  - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | sh
+  - source $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+script:
+  - npm install
+  - npm test
